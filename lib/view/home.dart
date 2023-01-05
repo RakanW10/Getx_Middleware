@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:getx_middleware9_10/main.dart';
+import 'package:getx_middleware9_10/services/settingservices.dart';
 
-class Home extends StatelessWidget {
+class Home extends GetView<SetteingServices> {
   const Home({super.key});
 
   @override
@@ -14,13 +12,30 @@ class Home extends StatelessWidget {
         title: Text("Home"),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            sharedprf?.clear();
-            Get.offAllNamed("/");
-          },
-          child: Text("Logout"),
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GetX<SetteingServices>(
+              builder: (c) => Text("${controller.counter}"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                controller.increase();
+              },
+              child: Icon(Icons.plus_one),
+              style:
+                  ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                controller.sharedprefs.clear();
+                Get.offAllNamed("/");
+              },
+              child: Text("Logout"),
+              style:
+                  ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+            ),
+          ],
         ),
       ),
     );

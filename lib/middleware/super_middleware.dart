@@ -10,6 +10,6 @@ class Super_middleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
     print("super here");
-    if (myvar == true) return const RouteSettings(name: "super");
+    if (myvar != true) return const RouteSettings(name: "super");
   }
 }

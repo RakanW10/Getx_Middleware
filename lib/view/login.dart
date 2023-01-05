@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_middleware9_10/main.dart';
+import 'package:getx_middleware9_10/services/settingservices.dart';
 
-class Login extends StatelessWidget {
+class Login extends GetView<SetteingServices> {
   const Login({super.key});
 
   @override
@@ -17,14 +17,14 @@ class Login extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                sharedprf?.setString("role", "user");
+                controller.sharedprefs.setString("role", "user");
                 Get.offNamed("home");
               },
               child: const Text("Loing User"),
             ),
             ElevatedButton(
               onPressed: () {
-                sharedprf?.setString("role", "admin");
+                controller.sharedprefs.setString("role", "admin");
                 Get.offNamed("admin");
               },
               child: const Text("Loing Admin"),
