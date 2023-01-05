@@ -10,9 +10,9 @@ class Auth_middleware extends GetMiddleware {
   int? get priority => 1;
   @override
   RouteSettings? redirect(String? route) {
-    if (controller.sharedprefs!.get("role") == "user")
+    if (controller.sharedprefs.get("role") == "user")
       return const RouteSettings(name: "/home");
-    if (controller.sharedprefs!.get("role") == "admin")
+    if (controller.sharedprefs.get("role") == "admin")
       return const RouteSettings(name: "/admin");
   }
 }
