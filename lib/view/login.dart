@@ -12,12 +12,24 @@ class Login extends StatelessWidget {
         title: const Text('loing Page'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            sharedprf?.setString("id", "test");
-            Get.offNamed("/home");
-          },
-          child: Text("Loing"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                sharedprf?.setString("role", "user");
+                Get.offNamed("home");
+              },
+              child: const Text("Loing User"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                sharedprf?.setString("role", "admin");
+                Get.offNamed("admin");
+              },
+              child: const Text("Loing Admin"),
+            ),
+          ],
         ),
       ),
     );
